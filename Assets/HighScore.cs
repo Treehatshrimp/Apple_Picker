@@ -2,17 +2,18 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using TMPro; //Use this if new version
 
 public class HighScore : MonoBehaviour
 {
-    static private Text _UI_TEXT;
+    static private TMP_Text _UI_TEXT;
     static private int _SCORE = 1000;
 
-    private Text txtCom; //txtCom is a reference o this GO's Text component
+    private TMP_Text txtCom; //txtCom is a reference o this GO's Text component
 
     private void Awake()
     {
-        _UI_TEXT = GetComponent<Text>();
+        _UI_TEXT = GetComponent<TMP_Text>();
         //If the PlayerPrefs HighScore already exists, read it
         if (PlayerPrefs.HasKey("HighScore"))
         {
