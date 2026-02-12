@@ -1,8 +1,8 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.UI; //lets use Text : Legacy
-using TMPro; //Use this if new version
+using UnityEngine.UI; // Legacy
+using TMPro; //Use this for text, new version
 
 public class ScoreCounter : MonoBehaviour
 {
