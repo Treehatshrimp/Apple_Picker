@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class ApplePicker : MonoBehaviour
 {
     [Header("Inscribed")]
+    public GameOverManager gameOverManager;
     public GameObject basketPrefab;
     public int numBaskets = 4;
     public float basketBottomY = -14f;
@@ -45,7 +46,7 @@ public class ApplePicker : MonoBehaviour
         //If there are no Baskets left, restart the game
         if(basketList.Count == 0)
         {
-            SceneManager.LoadScene("_Scene_0");
+            gameOverManager.ShowGameOver();
         }
     }
 }
