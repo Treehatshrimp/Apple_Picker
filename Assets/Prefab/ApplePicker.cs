@@ -34,6 +34,12 @@ public class ApplePicker : MonoBehaviour
         {
             Destroy(tempGO);
         }
+        //Destroy all poison
+        GameObject[] poisonArray = GameObject.FindGameObjectsWithTag("Poison");
+        foreach (GameObject tempGO in poisonArray)
+        {
+            Destroy(tempGO);
+        }
         //Destroy one of the Baskets
         //Get the index of the last Basket in basketList
         int basketIndex = basketList.Count - 1;

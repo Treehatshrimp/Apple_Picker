@@ -7,24 +7,31 @@ public class AppleTree : MonoBehaviour
     [Header("Inscribed")]
     //Prefab for instantiating apples
     public GameObject applePrefab;
+    public GameObject poisonPrefab;
 
     //Speed at which the AppleTree moves
-    public float speed = 1f;
+    public float speed = 10f;
 
     //Distance where AppleTree turns around
-    public float leftAndRightEdge = 10f;
+    public float leftAndRightEdge = 24f;
 
     //Chance that the AppleTree will change directions
-    public float changeDirChance = 0.1f;
+    public float changeDirChance = 0.001f;
 
-    //Seconds between Apples instantiations
+    //Seconds between Apples and poison instantiations
     public float appleDropDelay = 1f;
+    public float poisonDropDelay = 10f;
+
+    //Time before increasing the round and difficulty
+    float elapsedTime = 0f;  // seconds since start
+    public RoundManager roundManager; //Add the round indicator in
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         //Start Dropping apples
         Invoke("DropApple", 2f);
+        Invoke("DropPoison", 6f);
 
     }
     void DropApple()
@@ -32,6 +39,26 @@ public class AppleTree : MonoBehaviour
         GameObject apple = Instantiate<GameObject>(applePrefab);
         apple.transform.position = transform.position;
         Invoke("DropApple", appleDropDelay);
+        
+    }
+    void DropPoison()
+    {
+        //Added poison
+        GameObject poison = Instantiate<GameObject>(poisonPrefab);
+        poison.transform.position = transform.position + new Vector3(Random.Range(-2f,2f),0f,0f);
+        Invoke("DropPoison", poisonDropDelay);
+    }
+    void UpdateDifficulty()
+    {
+        // after 30 seconds
+        if (elapsedTime >= 20f)
+        {
+            speed *= 1.3f;
+            appleDropDelay *= 0.8f;
+            poisonDropDelay *= 0.85f;
+            elapsedTime = 0f;
+            roundManager.NextRound();
+        }
     }
 
     // Update is called once per frame
@@ -54,6 +81,8 @@ public class AppleTree : MonoBehaviour
         {
             speed *= -1;
         }
+        elapsedTime += Time.deltaTime; // increment by frame time
+        UpdateDifficulty();
     }
     void FixedUpdate()
     {

@@ -45,5 +45,13 @@ public class Basket : MonoBehaviour
             scoreCounter.score += 100;
             HighScore.TRY_SET_HIGH_SCORE(scoreCounter.score);
         }
+        else if (collidedWith.CompareTag("Poison"))
+        {
+            Destroy(collidedWith);
+            //Lose a basket
+            ApplePicker apScript = Camera.main.GetComponent<ApplePicker>();
+            //Call the public AppleMissed() method of apScript
+            apScript.AppleMissed();
+        }
     }
 }
