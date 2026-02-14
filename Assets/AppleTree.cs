@@ -10,13 +10,13 @@ public class AppleTree : MonoBehaviour
     public GameObject poisonPrefab;
 
     //Speed at which the AppleTree moves
-    public float speed = 10f;
+    public float speed = 9f;
 
     //Distance where AppleTree turns around
     public float leftAndRightEdge = 24f;
 
     //Chance that the AppleTree will change directions
-    public float changeDirChance = 0.001f;
+    public float changeDirChance = 0.007f;
 
     //Seconds between Apples and poison instantiations
     public float appleDropDelay = 1f;

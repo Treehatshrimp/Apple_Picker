@@ -1060,7 +1060,7 @@ PrefabInstance:
       objectReference: {fileID: 633678860}
     - target: {fileID: -7469906718766898870, guid: 74975027ec74008428ae912e7ccf0f7e, type: 3}
       propertyPath: changeDirChance
-      value: 0.005
+      value: 0.007
       objectReference: {fileID: 0}
     - target: {fileID: -7469906718766898870, guid: 74975027ec74008428ae912e7ccf0f7e, type: 3}
       propertyPath: poisonDropDelay
